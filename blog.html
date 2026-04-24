@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Insights — SciMyth Games</title>
+  <meta name="description" content="Industry insights, game development tips, and studio news from SciMyth Games. Stay updated on outsourcing trends, engine comparisons, and best practices.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="SciMyth Games Home"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a><a href="services.html">Services</a><a href="games.html">Portfolio</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing</a><a href="process.html">Process</a><a href="blog.html" class="active">Blog</a><a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.82rem;">Request a Quote</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+  <section class="hero page-hero" id="blog-hero">
+    <canvas class="hero-canvas" id="starfield" aria-hidden="true"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="pulse-dot"></div> Industry Knowledge</div>
+      <h1>Blog & <span class="text-gradient-gold">Insights</span></h1>
+      <p class="hero-subtitle">Game development tips, industry trends, outsourcing best practices, and studio news.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="separator">/</span><span class="current">Blog</span></nav>
+  </div>
+
+  <!-- Blog Filter & Grid -->
+  <section style="padding-top: 20px;">
+    <div class="container">
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="development" aria-pressed="false">Development</button>
+        <button class="filter-btn" data-filter="art" aria-pressed="false">Art</button>
+        <button class="filter-btn" data-filter="industry" aria-pressed="false">Industry</button>
+        <button class="filter-btn" data-filter="tutorials" aria-pressed="false">Tutorials</button>
+      </div>
+
+      <div class="blog-grid" id="blog-grid">
+
+        <article class="blog-card reveal" data-category="industry">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #0d47a1 0%, #00acc1 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">🌍</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Industry</span>
+            <h3 class="blog-title">5 Tips for Outsourcing Game Development Successfully</h3>
+            <p class="blog-excerpt">Key strategies for finding the right outsourcing partner, setting clear expectations, and managing remote game dev teams effectively.</p>
+            <div class="blog-meta">
+              <span>📅 March 15, 2024</span>
+              <span>⏱ 8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal" data-category="development">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #4a148c 0%, #e040fb 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">⚡</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Development</span>
+            <h3 class="blog-title">Unity vs Unreal Engine 5: Choosing the Right Engine for Your Project</h3>
+            <p class="blog-excerpt">A comprehensive comparison of Unity and UE5 covering performance, graphics, learning curve, cost, and ideal use cases for each engine.</p>
+            <div class="blog-meta">
+              <span>📅 March 8, 2024</span>
+              <span>⏱ 12 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal" data-category="development">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #006064 0%, #00e5ff 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">🥽</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Development</span>
+            <h3 class="blog-title">The Future of VR/AR in Gaming: What Studios Need to Know</h3>
+            <p class="blog-excerpt">Exploring the latest VR/AR trends, hardware developments, and opportunities for game studios looking to enter the immersive gaming space.</p>
+            <div class="blog-meta">
+              <span>📅 February 22, 2024</span>
+              <span>⏱ 10 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal" data-category="industry">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #bf360c 0%, #ff9800 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">👥</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Industry</span>
+            <h3 class="blog-title">How to Manage Remote Game Development Teams Effectively</h3>
+            <p class="blog-excerpt">Proven strategies for communication, sprint planning, time zone management, and building trust with distributed game dev teams.</p>
+            <div class="blog-meta">
+              <span>📅 February 10, 2024</span>
+              <span>⏱ 7 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal" data-category="tutorials">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #1b5e20 0%, #00e676 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">🧪</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Tutorials</span>
+            <h3 class="blog-title">Quality Assurance Best Practices for Game Development</h3>
+            <p class="blog-excerpt">A complete guide to building an effective QA pipeline — from test plan creation to automated testing and performance profiling.</p>
+            <div class="blog-meta">
+              <span>📅 January 28, 2024</span>
+              <span>⏱ 9 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal" data-category="art">
+          <div class="blog-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #880e4f 0%, #f06292 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size: 3rem;">🎨</span>
+            </div>
+          </div>
+          <div class="blog-body">
+            <span class="blog-category">Art</span>
+            <h3 class="blog-title">The Rise of Co-Development in AAA Studios</h3>
+            <p class="blog-excerpt">Why major publishers are embracing co-development models and how art outsourcing is reshaping the AAA production pipeline.</p>
+            <div class="blog-meta">
+              <span>📅 January 15, 2024</span>
+              <span>⏱ 6 min read</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section>
+    <div class="container">
+      <div class="newsletter reveal">
+        <div>
+          <h3>Subscribe to Our <span class="text-gradient-cyan">Newsletter</span></h3>
+          <p>Get the latest game dev insights, industry news, and studio updates delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" aria-label="Newsletter signup">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-logo"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></div><p>Full-cycle game development outsourcing studio delivering AAA-quality games and interactive experiences.</p><div class="social-links" style="margin-top: 20px;"><a href="#" aria-label="Twitter / X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Discord">💬</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+        <div class="footer-col"><h4>Services</h4><a href="services.html">Game Development</a><a href="services.html">Game Art & Animation</a><a href="services.html">QA & Testing</a><a href="services.html">Co-Development</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="process.html">How We Work</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="games.html">Portfolio</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing Models</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Stay Updated</h4><p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 12px;">Get industry insights and studio news.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter signup"><input type="email" placeholder="Your email" aria-label="Email for newsletter"><button type="submit" class="btn btn-primary btn-sm">→</button></form></div></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 SciMyth Games. All rights reserved.</p><div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Itch.io">🎮</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+    </div>
+  </footer>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>

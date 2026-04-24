@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio & Case Studies — SciMyth Games</title>
+  <meta name="description" content="Explore SciMyth Games' portfolio of delivered game projects — from mythology RPGs to multiplayer strategy and survival horror. Filter by category and view case studies.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="SciMyth Games Home"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a><a href="services.html">Services</a><a href="games.html" class="active">Portfolio</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing</a><a href="process.html">Process</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.82rem;">Request a Quote</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+  <section class="hero page-hero" id="portfolio-hero">
+    <canvas class="hero-canvas" id="starfield" aria-hidden="true"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="pulse-dot"></div> 50+ Projects Delivered</div>
+      <h1>Our <span class="text-gradient-gold">Portfolio</span></h1>
+      <p class="hero-subtitle">A showcase of games and interactive experiences we've built for clients worldwide.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="separator">/</span><span class="current">Portfolio</span></nav>
+  </div>
+
+  <!-- Portfolio Grid -->
+  <section id="portfolio-grid" style="padding-top: 20px;">
+    <div class="container">
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="fullgame" aria-pressed="false">Full Game</button>
+        <button class="filter-btn" data-filter="codev" aria-pressed="false">Co-Dev</button>
+        <button class="filter-btn" data-filter="art" aria-pressed="false">Art</button>
+        <button class="filter-btn" data-filter="mobile" aria-pressed="false">Mobile</button>
+      </div>
+
+      <div class="grid-3" id="games-container">
+
+        <!-- Indra vs Vritrasur -->
+        <div class="game-card reveal" data-game="indravsvritrasur" data-category="fullgame">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #bf360c 0%, #ffb300 50%, #ff6f00 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">⚡</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Action RPG</span>
+              <span class="card-tag gold">Mythology</span>
+            </div>
+            <h3 class="card-title">Indra vs Vritrasur</h3>
+            <p class="card-desc">Full-cycle action RPG with Vedic mythology setting — 3D characters, divine weapons, cinematic quest system.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🖥 PC • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- Realm Rivals -->
+        <div class="game-card reveal" data-game="realmrivals" data-category="fullgame">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #311b92 0%, #7c4dff 50%, #b388ff 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">⚔️</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Strategy</span>
+              <span class="card-tag gold">Multiplayer</span>
+            </div>
+            <h3 class="card-title">Realm Rivals</h3>
+            <p class="card-desc">Real-time competitive strategy with multiplayer netcode, army management, and alliance mechanics.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🖥 PC • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- The Lost Cure -->
+        <div class="game-card reveal" data-game="thelostcure" data-category="fullgame">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #004d40 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">🧪</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Horror</span>
+              <span class="card-tag gold">Survival</span>
+            </div>
+            <h3 class="card-title">The Lost Cure</h3>
+            <p class="card-desc">Atmospheric survival horror with puzzle mechanics, narrative design, and environmental storytelling.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🖥 PC • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- The Shooter -->
+        <div class="game-card reveal" data-game="theshooter" data-category="fullgame">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #212121 0%, #424242 50%, #616161 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">🎯</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">FPS</span>
+              <span class="card-tag gold">Action</span>
+            </div>
+            <h3 class="card-title">The Shooter</h3>
+            <p class="card-desc">First-person shooter with tight gunplay, AI systems, and diverse environment design.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🖥 PC • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- Reality Run -->
+        <div class="game-card reveal" data-game="realityrun" data-category="codev">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #004d40 0%, #00e676 50%, #1de9b6 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">🏃</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Runner</span>
+              <span class="card-tag gold">UE5</span>
+            </div>
+            <h3 class="card-title">Reality Run</h3>
+            <p class="card-desc">Endless runner built in Unreal Engine 5 with Blueprints — co-development project showcasing UE5 expertise.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🖥 PC • Unreal Engine 5</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- Paint Runner -->
+        <div class="game-card reveal" data-game="paintrunner" data-category="mobile">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #e91e63 0%, #ff9800 33%, #4caf50 66%, #2196f3 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">🎨</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Platformer</span>
+              <span class="card-tag gold">Mobile</span>
+            </div>
+            <h3 class="card-title">Paint Runner</h3>
+            <p class="card-desc">Colorful mobile platformer with paint mechanics — cross-platform development for iOS and Android.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">📱 Mobile / 🖥 PC • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+        <!-- BubbleBoom -->
+        <div class="game-card reveal" data-game="bubbleboom" data-category="art">
+          <div class="card-image">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, #1a237e 0%, #00bcd4 50%, #e040fb 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:4rem;">🫧</span>
+            </div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Arcade</span>
+              <span class="card-tag gold">Casual</span>
+            </div>
+            <h3 class="card-title">BubbleBoom</h3>
+            <p class="card-desc">Browser-based arcade game with vibrant art direction and combo-driven gameplay mechanics.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-platforms">🌐 WebGL • Unity</div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <section class="logo-carousel-section" aria-label="Client logos">
+    <div class="logo-carousel-label">Trusted by Studios Worldwide</div>
+    <div class="logo-carousel-track" aria-hidden="true">
+      <div class="logo-item">⚡ NEXON</div>
+      <div class="logo-item">🎯 EPIC GAMES</div>
+      <div class="logo-item">🎮 VALVE</div>
+      <div class="logo-item">🏆 UBISOFT</div>
+      <div class="logo-item">🌟 RIOT GAMES</div>
+      <div class="logo-item">🎲 EA GAMES</div>
+      <div class="logo-item">⚔️ BETHESDA</div>
+      <div class="logo-item">🔮 SQUARE ENIX</div>
+      <div class="logo-item">⚡ NEXON</div>
+      <div class="logo-item">🎯 EPIC GAMES</div>
+      <div class="logo-item">🎮 VALVE</div>
+      <div class="logo-item">🏆 UBISOFT</div>
+      <div class="logo-item">🌟 RIOT GAMES</div>
+      <div class="logo-item">🎲 EA GAMES</div>
+      <div class="logo-item">⚔️ BETHESDA</div>
+      <div class="logo-item">🔮 SQUARE ENIX</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 60px 0 100px;">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="section-tag" style="margin-bottom: 18px;">Have a Project in Mind?</span>
+        <h2>Let's Build It <span class="text-gradient-mixed">Together</span></h2>
+        <p>From concept art to final builds — we handle it all. Tell us about your game and we'll create a custom proposal.</p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation →</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="game-modal" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="modal">
+      <div class="modal-header">
+        <div style="width:100%;aspect-ratio:16/9;background:linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:5rem;">🎮</span>
+        </div>
+        <button class="modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-game-title">Project Title</h3>
+        <div class="modal-genre">Genre</div>
+        <p class="modal-desc">Description</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><div class="meta-label">Platform</div><div class="meta-value">—</div></div>
+          <div class="modal-meta-item"><div class="meta-label">Engine</div><div class="meta-value">—</div></div>
+          <div class="modal-meta-item"><div class="meta-label">Year</div><div class="meta-value">—</div></div>
+          <div class="modal-meta-item"><div class="meta-label">Team</div><div class="meta-value">—</div></div>
+        </div>
+        <div class="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-logo"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></div><p>Full-cycle game development outsourcing studio delivering AAA-quality games and interactive experiences.</p><div class="social-links" style="margin-top: 20px;"><a href="#" aria-label="Twitter / X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Discord">💬</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+        <div class="footer-col"><h4>Services</h4><a href="services.html">Game Development</a><a href="services.html">Game Art & Animation</a><a href="services.html">QA & Testing</a><a href="services.html">Co-Development</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="process.html">How We Work</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="games.html">Portfolio</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing Models</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Stay Updated</h4><p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 12px;">Get industry insights and studio news.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter signup"><input type="email" placeholder="Your email" aria-label="Email for newsletter"><button type="submit" class="btn btn-primary btn-sm">→</button></form></div></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 SciMyth Games. All rights reserved.</p><div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Itch.io">🎮</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+    </div>
+  </footer>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>

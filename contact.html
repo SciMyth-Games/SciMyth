@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Request a Quote | SciMyth Games</title>
+  <meta name="description" content="Get in touch with SciMyth Games for a free project estimate. Request a quote for game development outsourcing, co-development, or art services.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="SciMyth Games Home"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a><a href="services.html">Services</a><a href="games.html">Portfolio</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing</a><a href="process.html">Process</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary active" style="padding: 10px 22px; font-size: 0.82rem;">Request a Quote</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+  <section class="hero page-hero" id="contact-hero">
+    <canvas class="hero-canvas" id="starfield" aria-hidden="true"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="pulse-dot"></div> Free Estimate • 48-Hour Response</div>
+      <h1>Contact Us for a <span class="text-gradient-mixed">Free Estimate</span></h1>
+      <p class="hero-subtitle">Tell us about your project and we'll prepare a custom proposal with team composition, timeline, and transparent pricing.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="separator">/</span><span class="current">Contact</span></nav>
+  </div>
+
+  <!-- Contact Content -->
+  <section class="contact-section" id="contact" style="padding-top: 20px;">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Form -->
+        <div class="reveal">
+          <div class="glass-card" style="padding: 40px;">
+            <h3 style="margin-bottom: 8px;">Request a Quote</h3>
+            <p style="margin-bottom: 32px; font-size: 0.9rem;">Fill out the form below and our team will respond within 48 hours with a custom proposal.</p>
+
+            <form id="contact-form">
+              <div class="grid-2" style="gap: 20px;">
+                <div class="form-group">
+                  <label for="name">Your Name *</label>
+                  <input type="text" id="name" placeholder="John Doe" autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" placeholder="john@company.com" autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap: 20px;">
+                <div class="form-group">
+                  <label for="company">Company Name</label>
+                  <input type="text" id="company" placeholder="Your studio or company" autocomplete="organization">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone (Optional)</label>
+                  <input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="project-type">Service Needed *</label>
+                <select id="project-type" required>
+                  <option value="">Select a service...</option>
+                  <option value="full-game">Full Game Development</option>
+                  <option value="co-dev">Co-Development</option>
+                  <option value="art">Game Art & Animation</option>
+                  <option value="qa">QA & Testing</option>
+                  <option value="design">Game Design</option>
+                  <option value="live-ops">Live Ops & Support</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="budget">Estimated Budget</label>
+                <select id="budget">
+                  <option value="">Select budget range (optional)...</option>
+                  <option value="under-10k">Under $10,000</option>
+                  <option value="10k-50k">$10,000 – $50,000</option>
+                  <option value="50k-100k">$50,000 – $100,000</option>
+                  <option value="100k-500k">$100,000 – $500,000</option>
+                  <option value="500k-plus">$500,000+</option>
+                  <option value="discuss">Let's Discuss</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Tell Us About Your Project *</label>
+                <textarea id="message" placeholder="Describe your game concept, target platforms, team size needed, timeline expectations, and any specific requirements..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">
+                🚀 Request Free Estimate
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: Info Cards -->
+        <div>
+          <div class="glass-card contact-info-card reveal reveal-delay-1">
+            <div class="info-icon">📧</div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value">contact@scimythgames.studio</div>
+            </div>
+          </div>
+
+          <div class="glass-card contact-info-card reveal reveal-delay-2">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Phone</div>
+              <div class="info-value">+1 (555) 123-4567</div>
+            </div>
+          </div>
+
+          <div class="glass-card contact-info-card reveal reveal-delay-3">
+            <div class="info-icon">⏱</div>
+            <div>
+              <div class="info-label">Response Time</div>
+              <div class="info-value">Within 48 Hours</div>
+            </div>
+          </div>
+
+          <div class="glass-card contact-info-card reveal reveal-delay-4">
+            <div class="info-icon">🌍</div>
+            <div>
+              <div class="info-label">Location</div>
+              <div class="info-value">Remote • Worldwide</div>
+            </div>
+          </div>
+
+          <div class="glass-card contact-info-card reveal">
+            <div class="info-icon">💬</div>
+            <div>
+              <div class="info-label">Social</div>
+              <div class="info-value">Discord • LinkedIn • Twitter</div>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div style="margin-top: 32px;" class="reveal">
+            <h3 style="margin-bottom: 20px; font-size: 1.1rem;">
+              <span class="text-gradient-cyan">FAQ</span>
+            </h3>
+
+            <div class="faq-item">
+              <button class="faq-question">What's included in the free estimate?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><div class="faq-answer-inner">Our free estimate includes a project scope assessment, recommended team composition, technology recommendations, timeline estimate, and transparent pricing breakdown. No commitment required.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">How quickly can you start a project?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><div class="faq-answer-inner">Depending on team availability, we can typically start within 1-2 weeks of signing. For urgent projects, we maintain a bench of pre-vetted specialists ready for immediate deployment.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">Do you sign NDAs?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><div class="faq-answer-inner">Absolutely. We sign NDAs before any detailed discussions. Your IP and project details are fully protected. We also offer work-for-hire agreements ensuring you retain full ownership of all deliverables.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">What cooperation models do you offer?<span class="faq-icon">+</span></button>
+              <div class="faq-answer"><div class="faq-answer-inner">We offer three models: Outstaffing (individual specialists), Dedicated Teams (full team), and Managed Outsourcing (turnkey delivery). Visit our <a href="pricing.html" style="color: var(--cyan); text-decoration: underline;">Pricing page</a> for detailed comparisons.</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer" id="footer" style="margin-top: 60px;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-logo"><span class="logo-sci">SCI</span><span class="logo-myth">MYTH</span><span style="font-size: 0.7rem; color: var(--text-muted); font-family: Inter, sans-serif; font-weight: 400;">GAMES</span></div><p>Full-cycle game development outsourcing studio delivering AAA-quality games and interactive experiences.</p><div class="social-links" style="margin-top: 20px;"><a href="#" aria-label="Twitter / X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Discord">💬</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+        <div class="footer-col"><h4>Services</h4><a href="services.html">Game Development</a><a href="services.html">Game Art & Animation</a><a href="services.html">QA & Testing</a><a href="services.html">Co-Development</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="process.html">How We Work</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="games.html">Portfolio</a><a href="tech.html">Tech Stack</a><a href="pricing.html">Pricing Models</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Stay Updated</h4><p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 12px;">Get industry insights and studio news.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter signup"><input type="email" placeholder="Your email" aria-label="Email for newsletter"><button type="submit" class="btn btn-primary btn-sm">→</button></form></div></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 SciMyth Games. All rights reserved.</p><div class="social-links"><a href="#" aria-label="Twitter">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Itch.io">🎮</a><a href="#" aria-label="GitHub">⌨</a></div></div>
+    </div>
+  </footer>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
