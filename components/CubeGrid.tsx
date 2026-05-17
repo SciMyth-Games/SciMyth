@@ -29,7 +29,7 @@ export default function CubeGrid() {
     if (tiles.length === 0) return;
 
     const ctx = gsap.context(() => {
-      // Main wave animation: tiles rotate on X-axis, staggered right-to-left by column
+      // Main wave: tiles rotate on X-axis, staggered right-to-left
       gsap.to(tiles, {
         rotateX: 360,
         ease: "none",
@@ -47,9 +47,30 @@ export default function CubeGrid() {
         },
       });
 
-      // Subtle Y rotation wave for extra depth
+      // Glow pulse during rotation — border brightens then dims
       gsap.to(tiles, {
-        rotateY: 15,
+        borderColor: "rgba(34, 211, 238, 0.25)",
+        boxShadow: "0 0 8px rgba(34, 211, 238, 0.12), inset 0 0 6px rgba(34, 211, 238, 0.06)",
+        yoyo: true,
+        repeat: 1,
+        ease: "sine.inOut",
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 2,
+        },
+        stagger: {
+          each: 0.01,
+          from: "end",
+          grid: [grid.rows, grid.cols],
+          axis: "x",
+        },
+      });
+
+      // Subtle Y rotation wave for 3D depth
+      gsap.to(tiles, {
+        rotateY: 12,
         yoyo: true,
         repeat: 1,
         ease: "sine.inOut",
@@ -101,8 +122,8 @@ export default function CubeGrid() {
             key={i}
             className="grid-tile"
             style={{
-              background: "rgba(12, 16, 28, 0.35)",
-              border: "1px solid rgba(34, 211, 238, 0.05)",
+              background: "rgba(12, 16, 28, 0.5)",
+              border: "1px solid rgba(34, 211, 238, 0.08)",
               transformStyle: "preserve-3d",
               backfaceVisibility: "visible",
               willChange: "transform",

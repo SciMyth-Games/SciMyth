@@ -148,17 +148,58 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
-/* ═══════════ CUBE SCROLL PERSPECTIVE ═══════════ */
-.cube-perspective {
-  perspective: var(--perspective);
-  perspective-origin: center center;
+/* ═══════════ CONTENT GRIDS ═══════════ */
+.content-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
 }
 
-.cube-section {
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
+.content-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+}
+
+.content-section {
   position: relative;
+}
+
+/* ═══════════ GRID TILE GLOW ═══════════ */
+.grid-tile {
+  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* ═══════════ LOGO CAROUSEL ═══════════ */
+.logo-scroll-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: scrollLogos 30s linear infinite;
+}
+
+.logo-scroll-item {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════════ VIGNETTE OVERLAY ═══════════ */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
 }
 
 /* ═══════════ BUTTONS ═══════════ */

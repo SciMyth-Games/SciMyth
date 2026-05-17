@@ -1,5 +1,4 @@
 "use client";
-import { useCubeScroll } from "@/hooks/useCubeScroll";
 import { useLenis } from "@/hooks/useLenis";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -11,6 +10,7 @@ import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ParallaxBackground from "@/components/ParallaxBackground";
+import CubeGrid from "@/components/CubeGrid";
 
 const services = [
   { icon: "🎮", title: "Game Development", description: "Full-cycle game development from concept to launch. Unity, Unreal Engine 5, and custom solutions for PC, mobile, and console." },
@@ -44,54 +44,46 @@ const stats = [
 const logos = ["⚡ NEXON", "🎯 EPIC GAMES", "🎮 VALVE", "🏆 UBISOFT", "🌟 RIOT GAMES", "🎲 EA GAMES", "⚔️ BETHESDA", "🔮 SQUARE ENIX"];
 
 export default function Home() {
-  const cubeRef = useCubeScroll();
   useLenis();
 
   return (
     <>
       <LoadingScreen />
       <ParallaxBackground />
+      <CubeGrid />
       <Navbar />
 
-      <div ref={cubeRef} className="cube-perspective">
+      {/* All content at z-index 2, above the grid */}
+      <div style={{ position: "relative", zIndex: 2 }}>
+
         {/* ═══ HERO ═══ */}
-        <div className="cube-section">
+        <section className="content-section">
           <Hero />
-        </div>
+        </section>
 
         {/* ═══ TRUSTED BY ═══ */}
-        <div className="cube-section" style={{ padding: "24px 0 40px", overflow: "hidden", position: "relative", zIndex: 1 }}>
+        <div style={{ padding: "24px 0 40px", overflow: "hidden" }}>
           <div style={{ textAlign: "center", marginBottom: 16 }}>
             <span style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.2em", fontWeight: 500 }}>
-              Trusted By Studios & Publishers Worldwide
+              Trusted By Studios &amp; Publishers Worldwide
             </span>
           </div>
-          <div style={{ display: "flex", gap: 48, animation: "scrollLogos 30s linear infinite", whiteSpace: "nowrap" }}>
+          <div className="logo-scroll-track">
             {[...logos, ...logos].map((logo, i) => (
-              <span key={i} style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontWeight: 600, letterSpacing: "0.05em", opacity: 0.5, flexShrink: 0 }}>{logo}</span>
+              <span key={i} className="logo-scroll-item">{logo}</span>
             ))}
           </div>
-          <style jsx>{`
-            @keyframes scrollLogos {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-          `}</style>
         </div>
 
         {/* ═══ SERVICES ═══ */}
-        <section className="cube-section" id="services" style={{ padding: "100px 0", position: "relative", zIndex: 1 }}>
+        <section className="content-section" id="services" style={{ padding: "100px 0" }}>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">What We Do</span>
               <h2>Game Development <span className="text-gradient-cyan">Services</span></h2>
               <p>End-to-end game development solutions tailored to your vision. From AAA titles to indie gems, we bring your ideas to life.</p>
             </div>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))",
-              gap: 24,
-            }}>
+            <div className="content-grid-3">
               {services.map((s, i) => (
                 <ServiceCard key={i} {...s} delay={i * 0.1} />
               ))}
@@ -100,18 +92,14 @@ export default function Home() {
         </section>
 
         {/* ═══ PORTFOLIO ═══ */}
-        <section className="cube-section" id="portfolio" style={{ padding: "100px 0", position: "relative", zIndex: 1 }}>
+        <section className="content-section" id="portfolio" style={{ padding: "100px 0" }}>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">Our Work</span>
               <h2>Featured <span className="text-gradient-gold">Case Studies</span></h2>
               <p>A selection of our proudest deliveries — from mythological RPGs to multiplayer strategy games.</p>
             </div>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))",
-              gap: 24,
-            }}>
+            <div className="content-grid-3">
               {games.map((g, i) => (
                 <GameCard key={i} {...g} />
               ))}
@@ -120,20 +108,16 @@ export default function Home() {
         </section>
 
         {/* ═══ WHY US ═══ */}
-        <section className="cube-section" id="why" style={{ padding: "100px 0", position: "relative", zIndex: 1 }}>
+        <section className="content-section" id="why" style={{ padding: "100px 0" }}>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">Why SciMyth</span>
               <h2>What Sets Us <span className="text-gradient-cyan">Apart</span></h2>
               <p>We don&apos;t just build games — we become an extension of your team.</p>
             </div>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))",
-              gap: 24,
-            }}>
+            <div className="content-grid-4">
               {features.map((f, i) => (
-                <div key={i} className="glass glass-hover cube-child" style={{ padding: "32px 24px", textAlign: "center" }}>
+                <div key={i} className="glass glass-hover" style={{ padding: "32px 24px", textAlign: "center" }}>
                   <div style={{ fontSize: "2.5rem", marginBottom: 16 }}>{f.icon}</div>
                   <h4 style={{ fontSize: "1.05rem", fontFamily: "var(--font-heading)", fontWeight: 600, marginBottom: 8 }}>{f.title}</h4>
                   <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>{f.desc}</p>
@@ -144,13 +128,9 @@ export default function Home() {
         </section>
 
         {/* ═══ STATS ═══ */}
-        <section className="cube-section" id="stats" style={{ padding: "80px 0", position: "relative", zIndex: 1 }}>
+        <section className="content-section" id="stats" style={{ padding: "80px 0" }}>
           <div className="container">
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 220px), 1fr))",
-              gap: 24,
-            }}>
+            <div className="content-grid-4">
               {stats.map((s, i) => (
                 <StatsCounter key={i} {...s} />
               ))}
@@ -159,7 +139,7 @@ export default function Home() {
         </section>
 
         {/* ═══ TESTIMONIALS ═══ */}
-        <section className="cube-section" id="testimonials" style={{ padding: "100px 0", position: "relative", zIndex: 1 }}>
+        <section className="content-section" id="testimonials" style={{ padding: "100px 0" }}>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">Testimonials</span>
@@ -170,14 +150,14 @@ export default function Home() {
         </section>
 
         {/* ═══ CTA ═══ */}
-        <section className="cube-section" style={{ padding: "60px 0 100px", position: "relative", zIndex: 1 }}>
+        <section className="content-section" style={{ padding: "60px 0 100px" }}>
           <div className="container">
             <CTABanner />
           </div>
         </section>
-      </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }
