@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciMyth Games | Game Development Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0A0A0A',
+                        acid: '#CCFF00',
+                        pink: '#FF007F',
+                        surface: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        brutal: ['Syne', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased bg-grid">
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <div id="webgl-container"></div>
+
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+        <a href="index.html" class="text-2xl font-black tracking-tighter uppercase interactable">SCIMYTH GAMES</a>
+        <div class="space-x-8 hidden md:block font-mono text-sm">
+            <a href="index.html" class="nav-link interactable hover:text-acid transition-brutal">[ HOME ]</a>
+            <a href="arsenal.html" class="nav-link interactable hover:text-acid transition-brutal">[ ARSENAL ]</a>
+            <a href="proof.html" class="nav-link interactable hover:text-acid transition-brutal">[ PROOF ]</a>
+            <a href="deploy.html" class="interactable hover:text-acid transition-brutal text-pink">[ DEPLOY ]</a>
+        </div>
+    </nav>
+
+    <div class="fixed bottom-6 right-6 font-mono text-xs text-gray-500 z-50 text-right mix-blend-difference pointer-events-none">
+        <span class="tracking-widest">ACTIVE_NODE</span><br>
+        <span id="current-node-display" class="text-acid font-bold text-sm tracking-wider">[ HOME ]</span>
+    </div>
+
+    <main id="app-root" class="relative z-10">
+        <!-- Hero Section -->
+        <section id="view-home" class="page-view min-h-screen flex flex-col justify-center pt-20">
+            <div class="px-6 md:px-20 mb-20 mt-20 md:mt-24">
+                <div class="reveal mb-4">
+                    <span class="bg-acid text-dark px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest">System Status: Tactical</span>
+                </div>
+                <h1 class="hero-title-balanced font-black tracking-tighter uppercase mb-6 reveal">
+                    Ship gameplay<br>
+                    systems that <span class="text-acid">hold up</span><br>
+                    in production.
+                </h1>
+                <p class="font-mono text-lg md:text-xl text-gray-400 max-w-xl mb-10 border-l-2 border-acid pl-4 reveal">
+                    We partner with game studios that need combat, AI, and core gameplay loops delivered fast without sacrificing stability, readability, or handoff quality.
+                </p>
+                <div class="reveal flex flex-col sm:flex-row gap-4">
+                    <a href="proof.html" class="btn-glitch px-10 py-5 text-xl interactable transition-all">
+                        VIEW_BATTLE_LOGS.EXE
+                    </a>
+                    <a href="deploy.html" class="ghost-btn px-10 py-5 text-xl interactable transition-all text-center">
+                        START_DISCOVERY_CALL.SH
+                    </a>
+                </div>
+            </div>
+
+            <div class="marquee w-full mt-auto">
+                <div class="marquee-content font-black text-4xl uppercase tracking-widest text-stroke">
+                    /// UNREAL ENGINE 5 /// UNITY /// BEHAVIOR TREES /// NAVMESH AI /// NIAGARA VFX /// MOBILE DEPLOYMENT /// C++ ARCHITECTURE /// /// UNREAL ENGINE 5 /// UNITY /// BEHAVIOR TREES /// NAVMESH AI ///
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-strip px-6 md:px-20 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 reveal-stagger">
+                <div class="trust-item">
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Response SLA</p>
+                    <p class="font-black text-2xl uppercase">24 Hours</p>
+                </div>
+                <div class="trust-item">
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Delivery Mode</p>
+                    <p class="font-black text-2xl uppercase">Sprint-Based</p>
+                </div>
+                <div class="trust-item">
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Engine Stack</p>
+                    <p class="font-black text-2xl uppercase">UE5 + Unity</p>
+                </div>
+                <div class="trust-item">
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Engagement</p>
+                    <p class="font-black text-2xl uppercase">Embedded Delivery</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-32 px-6 md:px-20 border-t border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 reveal-stagger">
+                <div class="border-l border-acid/30 pl-6">
+                    <h3 class="text-acid font-black text-5xl mb-2">04</h3>
+                    <p class="font-mono text-xs text-gray-500 uppercase tracking-widest">Major Hits Shipped</p>
+                </div>
+                <div class="border-l border-acid/30 pl-6">
+                    <h3 class="text-acid font-black text-5xl mb-2">2026</h3>
+                    <p class="font-mono text-xs text-gray-500 uppercase tracking-widest">Current Cycle</p>
+                </div>
+                <div class="border-l border-acid/30 pl-6">
+                    <h3 class="text-acid font-black text-5xl mb-2">02</h3>
+                    <p class="font-mono text-xs text-gray-500 uppercase tracking-widest">Core Engines Mastered</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-20 border-t border-white/5 bg-surface/30">
+            <div class="mb-12">
+                <p class="font-mono text-xs uppercase tracking-widest text-pink mb-3">/// Service Taxonomy</p>
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">What The Studio<br><span class="text-acid">Delivers</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">Game Development</h3><p class="font-mono text-sm text-gray-400">Full-cycle implementation from prototype to production delivery.</p></div>
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">Game Art & Animation</h3><p class="font-mono text-sm text-gray-400">Characters, environments, VFX, UI assets, and integration-ready exports.</p></div>
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">QA & Testing</h3><p class="font-mono text-sm text-gray-400">Functional, regression, and performance QA before release milestones.</p></div>
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">Game Design</h3><p class="font-mono text-sm text-gray-400">Mechanics, balance, progression, and player-experience tuning.</p></div>
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">Co-Development</h3><p class="font-mono text-sm text-gray-400">Embedded specialists who integrate directly into your pipeline.</p></div>
+                <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-3">Live Ops Support</h3><p class="font-mono text-sm text-gray-400">Post-launch updates, event cycles, optimization, and maintenance.</p></div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-20 border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start reveal-stagger">
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-pink mb-4">/// Engagement Protocol</p>
+                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">How We<br><span class="text-acid">Deliver</span></h2>
+                    <p class="font-mono text-gray-400 max-w-xl">You get a scoped plan, milestone-based execution, and clean integration notes your internal team can extend after handoff.</p>
+                </div>
+                <div class="project-card p-10">
+                    <ul class="signal-list">
+                        <li>Discovery call focused on blocker, scope, and risk</li>
+                        <li>48-hour execution plan with milestone breakdown</li>
+                        <li>Weekly playable builds and progress checkpoints</li>
+                        <li>Final handoff with implementation notes and next steps</li>
+                    </ul>
+                    <a href="deploy.html" class="btn-glitch mt-8 px-8 py-4 text-base interactable transition-all">LOCK_IN_TIMELINE.CMD</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-20 border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 reveal-stagger">
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-pink mb-3">/// Engagement Models</p>
+                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">Flexible<br><span class="text-acid">Collaboration</span></h2>
+                    <p class="font-mono text-gray-400">Choose the delivery model that matches your production stage and internal capacity.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-2">Outstaffing</h3><p class="font-mono text-sm text-gray-400">Individual specialists added to your existing production team.</p></div>
+                    <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-2">Dedicated Team</h3><p class="font-mono text-sm text-gray-400">A focused pod managed with your goals, milestones, and reporting cadence.</p></div>
+                    <div class="project-card p-8"><h3 class="text-2xl font-black uppercase mb-2">Managed Outsourcing</h3><p class="font-mono text-sm text-gray-400">Turnkey execution where SciMyth owns delivery against agreed scope.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-20 border-t border-white/5 bg-surface/30">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 reveal-stagger">
+                <div class="project-card p-8 text-center"><p class="text-5xl font-black text-acid mb-2">15+</p><p class="font-mono text-xs uppercase tracking-widest text-gray-500">Years in Business</p></div>
+                <div class="project-card p-8 text-center"><p class="text-5xl font-black text-acid mb-2">50+</p><p class="font-mono text-xs uppercase tracking-widest text-gray-500">Projects Delivered</p></div>
+                <div class="project-card p-8 text-center"><p class="text-5xl font-black text-acid mb-2">12</p><p class="font-mono text-xs uppercase tracking-widest text-gray-500">Countries Served</p></div>
+                <div class="project-card p-8 text-center"><p class="text-5xl font-black text-acid mb-2">60+</p><p class="font-mono text-xs uppercase tracking-widest text-gray-500">Studio Members</p></div>
+            </div>
+        </section>
+
+        <!-- Brief Portfolio Preview -->
+        <section class="py-32 px-6 md:px-20 bg-surface/50">
+            <div class="mb-20 flex justify-between items-end">
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter reveal">Tactical<br><span class="text-acid">Deployments</span></h2>
+                <a href="proof.html" class="font-mono text-acid hover:text-pink transition-all interactable mb-4 reveal">[ VIEW_ALL ]</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal-stagger">
+                <a href="proof.html?project=project-indra" class="project-card interactable group project-launch cursor-pointer block" data-project-id="project-indra">
+                    <img src="assets/projects/indra/Indra1.png" class="w-full h-80 object-cover opacity-60 group-hover:opacity-100 transition-all" alt="Legend of Indra">
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4">
+                            <span class="tech-pill">UE5</span>
+                            <span class="tech-pill">Action RPG</span>
+                        </div>
+                        <h3 class="text-3xl font-black uppercase mb-4">Legend of Indra</h3>
+                        <p class="font-mono text-sm text-gray-400 mb-6">Full-scale action RPG with advanced combat, AI systems, and narrative-driven encounters.</p>
+                        <ul class="intel-list mb-6">
+                            <li>Combo-based combat system with hit detection and damage scaling</li>
+                            <li>Behavior Tree AI with dynamic decision-making</li>
+                            <li>Quest system with objective tracking and branching</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="proof.html?project=project-reality" class="project-card interactable group md:mt-24 project-launch cursor-pointer block" data-project-id="project-reality">
+                    <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.22.52.34.png" class="w-full h-80 object-cover opacity-60 group-hover:opacity-100 transition-all" alt="Reality Run">
+                    <div class="p-8">
+                        <div class="flex gap-2 mb-4">
+                            <span class="tech-pill">UE5</span>
+                            <span class="tech-pill">Sci-Fi Action</span>
+                        </div>
+                        <h3 class="text-3xl font-black uppercase mb-4">Reality Run</h3>
+                        <p class="font-mono text-sm text-gray-400 mb-6">Sci-fi action-combat prototype with dynamic encounters and exploration-focused design.</p>
+                        <ul class="intel-list mb-6">
+                            <li>Modular damage system with multiple damage types</li>
+                            <li>Enemy hierarchy with specialized variants</li>
+                            <li>AOE ability framework with VFX-driven effects</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-40 px-6 text-center border-t border-white/5">
+                <h2 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-12 reveal">Need a team that<br><span class="text-acid">ships fast?</span></h2>
+            <div class="reveal">
+                <a href="deploy.html" class="btn-glitch px-16 py-8 text-2xl interactable transition-all">
+                    INITIATE_DEPLOYMENT.CMD
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs font-mono text-gray-600">
+        <div class="mb-4 md:mb-0 uppercase tracking-widest">© 2026 SciMyth Games // Game Development Studio</div>
+        <div class="flex gap-8 uppercase tracking-widest">
+            <a href="#" class="hover:text-acid transition-all interactable">Twitter</a>
+            <a href="#" class="hover:text-acid transition-all interactable">ArtStation</a>
+            <a href="#" class="hover:text-acid transition-all interactable">Discord</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

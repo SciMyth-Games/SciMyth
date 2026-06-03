@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROOF | SciMyth Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0A0A0A',
+                        acid: '#CCFF00',
+                        pink: '#FF007F',
+                        surface: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        brutal: ['Syne', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased bg-grid">
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <div id="webgl-container"></div>
+
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+        <a href="index.html" class="text-2xl font-black tracking-tighter uppercase interactable">SCIMYTH GAMES</a>
+        <div class="space-x-8 hidden md:block font-mono text-sm">
+            <a href="index.html" class="nav-link interactable hover:text-acid transition-brutal">[ HOME ]</a>
+            <a href="arsenal.html" class="nav-link interactable hover:text-acid transition-brutal">[ ARSENAL ]</a>
+            <a href="proof.html" class="nav-link interactable hover:text-acid transition-brutal">[ PROOF ]</a>
+            <a href="deploy.html" class="interactable hover:text-acid transition-brutal text-pink">[ DEPLOY ]</a>
+        </div>
+    </nav>
+
+    <div class="fixed bottom-6 right-6 font-mono text-xs text-gray-500 z-50 text-right mix-blend-difference pointer-events-none">
+        <span class="tracking-widest">ACTIVE_NODE</span><br>
+        <span id="current-node-display" class="text-acid font-bold text-sm tracking-wider">[ PROOF ]</span>
+    </div>
+
+    <main id="app-root" class="relative z-10 pt-40 pb-20">
+        <section class="px-6 md:px-20 mb-32">
+            <div class="reveal mb-4">
+                <span class="text-pink font-mono text-xs font-bold uppercase tracking-widest">// MISSION_REPORTS</span>
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-6 reveal">Delivery<br><span class="text-acid">Proof</span></h1>
+            <p class="font-mono text-gray-400 max-w-3xl mb-12 reveal">Selected projects where we designed and implemented gameplay systems that improved combat feel, encounter behavior, and long-term maintainability.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-14 reveal-stagger" id="proof-selector">
+                <button class="project-selector-btn project-card p-6 text-left interactable ring-2 ring-acid" data-project-target="project-indra">
+                    <p class="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-2">UE5 / C++</p>
+                    <h3 class="text-2xl font-black uppercase mb-2">Indra vs Vritrasur</h3>
+                    <p class="font-mono text-xs text-gray-400">Open full build spec</p>
+                </button>
+                <button class="project-selector-btn project-card p-6 text-left interactable" data-project-target="project-reality">
+                    <p class="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-2">UE5 / Blueprints</p>
+                    <h3 class="text-2xl font-black uppercase mb-2">Reality Run</h3>
+                    <p class="font-mono text-xs text-gray-400">Open full build spec</p>
+                </button>
+                <button class="project-selector-btn project-card p-6 text-left interactable" data-project-target="project-slimey">
+                    <p class="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-2">Unity 6 / C#</p>
+                    <h3 class="text-2xl font-black uppercase mb-2">Slimey Jump</h3>
+                    <p class="font-mono text-xs text-gray-400">Open full build spec</p>
+                </button>
+                <button class="project-selector-btn project-card p-6 text-left interactable" data-project-target="project-pico">
+                    <p class="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-2">Unity / C#</p>
+                    <h3 class="text-2xl font-black uppercase mb-2">It's Me Pico</h3>
+                    <p class="font-mono text-xs text-gray-400">Open full build spec</p>
+                </button>
+            </div>
+            
+            <div class="space-y-32">
+                <!-- Project 1: Legend of Indra -->
+                <div id="project-indra" class="project-detail project-card grid grid-cols-1 lg:grid-cols-2 gap-0 reveal">
+                    <div class="carousel-container" id="carousel-indra">
+                        <div class="carousel-track" data-index="0">
+                            <img src="assets/projects/indra/Indra1.png" alt="Indra 1">
+                            <img src="assets/projects/indra/Indra2.png" alt="Indra 2">
+                            <img src="assets/projects/indra/Indra3.png" alt="Indra 3">
+                            <img src="assets/projects/indra/Indra4.png" alt="Indra 4">
+                            <img src="assets/projects/indra/Indra5.png" alt="Indra 5">
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-indra', -1)"><</button>
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-indra', 1)">></button>
+                        </div>
+                    </div>
+                    <div class="p-10 flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="text-4xl font-black uppercase leading-none">Legend of Indra<br>vs Vritrasur</h2>
+                            <span class="tech-pill">UE5 / C++</span>
+                        </div>
+                        <p class="font-mono text-sm text-gray-400 mb-8 border-l-2 border-acid pl-4">Action RPG production focused on responsive combat, reliable enemy behavior, and scalable quest architecture.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-pill">Unreal Engine 5</span>
+                            <span class="tech-pill">C++ / Blueprints</span>
+                            <span class="tech-pill">Behavior Trees</span>
+                            <span class="tech-pill">Data-Driven</span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-8">
+                            <div class="feature-row"><span>+</span> Built combo combat loop with reliable hit-confirm windows</div>
+                            <div class="feature-row"><span>+</span> Implemented Behavior Tree AI with cleaner state transitions</div>
+                            <div class="feature-row"><span>+</span> Shipped quest flow with branching objectives and tracking</div>
+                            <div class="feature-row"><span>+</span> Structured progression systems for easier balancing passes</div>
+                        </div>
+
+                        <div class="intel-box mb-8">
+                            <h5>TACTICAL INTEL</h5>
+                            <p class="font-mono text-xs text-gray-300">Challenge: Combat felt inconsistent across encounters. Solution: Tightened timing windows and refactored hit logic for predictable player feedback.</p>
+                        </div>
+
+                        <div class="video-wrapper mt-auto">
+                            <iframe src="https://www.youtube.com/embed/f-XdRkMnMCo" allowfullscreen></iframe>
+                        </div>
+                        <div class="mt-4 font-mono text-xs uppercase tracking-widest text-gray-500">
+                            <a href="https://youtu.be/znIVN4u2Osk" class="hover:text-acid transition-brutal interactable">ALT_CLIP</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Reality Run -->
+                <div id="project-reality" class="project-detail project-card grid grid-cols-1 lg:grid-cols-2 gap-0 reveal hidden">
+                    <div class="p-10 flex flex-col order-2 lg:order-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="text-4xl font-black uppercase leading-none">Reality Run</h2>
+                            <span class="tech-pill pink">UE5 / Blueprints</span>
+                        </div>
+                        <p class="font-mono text-sm text-gray-400 mb-8 border-l-2 border-pink pl-4">Sci-fi action prototype where speed of iteration and data-driven combat balancing were the primary goals.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-pill pink">Unreal Engine 5</span>
+                            <span class="tech-pill pink">Blueprints</span>
+                            <span class="tech-pill pink">Data Tables</span>
+                            <span class="tech-pill pink">Niagara VFX</span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-8">
+                            <div class="feature-row"><span class="text-pink">+</span> Modular damage framework to speed up tuning cycles</div>
+                            <div class="feature-row"><span class="text-pink">+</span> Enemy variant architecture for reusable behavior logic</div>
+                            <div class="feature-row"><span class="text-pink">+</span> AOE ability system with reusable VFX trigger patterns</div>
+                            <div class="feature-row"><span class="text-pink">+</span> Data-table balancing approach for rapid playtest updates</div>
+                        </div>
+
+                        <div class="intel-box !border-acid mb-8">
+                            <h5 class="!text-acid">TACTICAL INTEL</h5>
+                            <p class="font-mono text-xs text-gray-300">Challenge: Balancing new enemy types slowed iteration. Solution: Moved key values into data tables so designers could tune without code churn.</p>
+                        </div>
+
+                        <div class="video-wrapper mt-auto">
+                            <iframe src="https://www.youtube.com/embed/uYjTa0nZxZw" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="carousel-container order-1 lg:order-2" id="carousel-reality">
+                        <div class="carousel-track" data-index="0">
+                            <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.22.52.34.png" alt="Reality Run 1">
+                            <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.23.32.52.png" alt="Reality Run 2">
+                            <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.24.52.95.png" alt="Reality Run 3">
+                            <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.25.17.41.png" alt="Reality Run 4">
+                            <img src="assets/projects/realityrun/Engine Screenshot 2026.03.13 - 20.25.24.53.png" alt="Reality Run 5">
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-reality', -1)"><</button>
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-reality', 1)">></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Slimey Jump -->
+                <div id="project-slimey" class="project-detail project-card grid grid-cols-1 lg:grid-cols-2 gap-0 reveal hidden">
+                    <div class="carousel-container" id="carousel-slimey">
+                        <div class="carousel-track" data-index="0">
+                            <img src="assets/projects/slimey-jump/Screenshot 2026-04-06 211023.png" alt="Slimey Jump 1">
+                            <img src="assets/projects/slimey-jump/Screenshot 2026-04-06 211038.png" alt="Slimey Jump 2">
+                            <img src="assets/projects/slimey-jump/Screenshot 2026-04-06 211051.png" alt="Slimey Jump 3">
+                            <img src="assets/projects/slimey-jump/Screenshot 2026-04-06 211118.png" alt="Slimey Jump 4">
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-slimey', -1)"><</button>
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-slimey', 1)">></button>
+                        </div>
+                    </div>
+                    <div class="p-10 flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="text-4xl font-black uppercase leading-none">Slimey Jump</h2>
+                            <span class="tech-pill">Unity 6 / C#</span>
+                        </div>
+                        <p class="font-mono text-sm text-gray-400 mb-8 border-l-2 border-acid pl-4">Mobile-first endless platformer combining skill gameplay with progression, economy, and retention systems.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-pill">Unity 6</span>
+                            <span class="tech-pill">C#</span>
+                            <span class="tech-pill">URP</span>
+                            <span class="tech-pill">Physics2D</span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-8">
+                            <div class="feature-row"><span>+</span> Drag-jump controller tuned for predictable touch response</div>
+                            <div class="feature-row"><span>+</span> Difficulty curve driven by dynamic camera pressure logic</div>
+                            <div class="feature-row"><span>+</span> Card progression framework with rarity and upgrade loops</div>
+                            <div class="feature-row"><span>+</span> Integrated economy, quests, ads, and leaderboard systems</div>
+                        </div>
+
+                        <div class="intel-box mb-8">
+                            <h5>TACTICAL INTEL</h5>
+                            <p class="font-mono text-xs text-gray-300">Challenge: Gameplay and economy changes were colliding. Solution: Split runtime systems into clear layers for faster testing and safer updates.</p>
+                        </div>
+
+                        <div class="video-wrapper mt-auto">
+                            <iframe src="https://www.youtube.com/embed/z44rl-hI6EQ" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: It's Me Pico -->
+                <div id="project-pico" class="project-detail project-card grid grid-cols-1 lg:grid-cols-2 gap-0 reveal hidden">
+                    <div class="p-10 flex flex-col order-2 lg:order-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <h2 class="text-4xl font-black uppercase leading-none">It's Me Pico</h2>
+                            <span class="tech-pill pink">Unity / C#</span>
+                        </div>
+                        <p class="font-mono text-sm text-gray-400 mb-8 border-l-2 border-pink pl-4">Competitive mobile territory game focused on responsive simulation updates and long-session retention loops.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-pill pink">Unity 2023.x</span>
+                            <span class="tech-pill pink">C#</span>
+                            <span class="tech-pill pink">NavMesh</span>
+                            <span class="tech-pill pink">Google Mobile Ads</span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-8">
+                            <div class="feature-row"><span class="text-pink">+</span> Event-driven tile ownership and scoring update pipeline</div>
+                            <div class="feature-row"><span class="text-pink">+</span> Adaptive AI scaling tied to player performance signals</div>
+                            <div class="feature-row"><span class="text-pink">+</span> UTC-safe daily and weekly quest reset implementation</div>
+                            <div class="feature-row"><span class="text-pink">+</span> Monetization loops integrated without blocking gameplay</div>
+                        </div>
+
+                        <div class="intel-box !border-acid mb-8">
+                            <h5 class="!text-acid">TACTICAL INTEL</h5>
+                            <p class="font-mono text-xs text-gray-300">Challenge: Needed multiplayer-like pacing in single-opponent matches. Solution: Decoupled AI and tile-state updates for smoother perceived competition.</p>
+                        </div>
+
+                        <div class="video-wrapper mt-auto">
+                            <iframe src="https://youtube.com/embed/shorts/85G2j1jl3os" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="carousel-container order-1 lg:order-2" id="carousel-pico">
+                        <div class="carousel-track" data-index="0">
+                            <img src="assets/projects/pico/Screenshot_20260405_161250_It's Me Pico.jpg.jpeg" alt="Pico 1">
+                            <img src="assets/projects/pico/Screenshot_20260405_161309_It's Me Pico.jpg.jpeg" alt="Pico 2">
+                            <img src="assets/projects/pico/Screenshot_20260405_161345_It's Me Pico.jpg.jpeg" alt="Pico 3">
+                            <img src="assets/projects/pico/Screenshot_20260405_161436_It's Me Pico.jpg.jpeg" alt="Pico 4">
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-pico', -1)"><</button>
+                            <button class="carousel-btn interactable" onclick="slideCarousel('carousel-pico', 1)">></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-40 px-6 text-center bg-acid text-dark">
+            <h2 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-12">Need similar<br>execution?</h2>
+            <div class="reveal">
+                <a href="deploy.html" class="btn-glitch px-16 py-8 text-2xl !bg-dark !text-acid interactable transition-all">
+                    START_ENGAGEMENT.BIN
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs font-mono text-gray-600">
+        <div class="mb-4 md:mb-0 uppercase tracking-widest">© 2026 SciMyth Games // Game Development Studio</div>
+        <div class="flex gap-8 uppercase tracking-widest">
+            <a href="#" class="hover:text-acid transition-all interactable">Twitter</a>
+            <a href="#" class="hover:text-acid transition-all interactable">ArtStation</a>
+            <a href="#" class="hover:text-acid transition-all interactable">Discord</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const selectorButtons = document.querySelectorAll('.project-selector-btn');
+        const projectDetails = document.querySelectorAll('.project-detail');
+
+        function openProject(projectId) {
+            projectDetails.forEach((detail) => {
+                detail.classList.toggle('hidden', detail.id !== projectId);
+            });
+            selectorButtons.forEach((button) => {
+                const isActive = button.dataset.projectTarget === projectId;
+                button.classList.toggle('ring-2', isActive);
+                button.classList.toggle('ring-acid', isActive);
+            });
+            document.getElementById(projectId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        selectorButtons.forEach((button) => {
+            button.addEventListener('click', () => openProject(button.dataset.projectTarget));
+        });
+
+        const urlProject = new URLSearchParams(window.location.search).get('project');
+        if (urlProject && document.getElementById(urlProject)) {
+            openProject(urlProject);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEPLOY | SciMyth Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0A0A0A',
+                        acid: '#CCFF00',
+                        pink: '#FF007F',
+                        surface: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        brutal: ['Syne', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased bg-grid">
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <div id="webgl-container"></div>
+
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+        <a href="index.html" class="text-2xl font-black tracking-tighter uppercase interactable">SCIMYTH GAMES</a>
+        <div class="space-x-8 hidden md:block font-mono text-sm">
+            <a href="index.html" class="nav-link interactable hover:text-acid transition-brutal">[ HOME ]</a>
+            <a href="arsenal.html" class="nav-link interactable hover:text-acid transition-brutal">[ ARSENAL ]</a>
+            <a href="proof.html" class="nav-link interactable hover:text-acid transition-brutal">[ PROOF ]</a>
+            <a href="deploy.html" class="interactable hover:text-acid transition-brutal text-pink">[ DEPLOY ]</a>
+        </div>
+    </nav>
+
+    <div class="fixed bottom-6 right-6 font-mono text-xs text-gray-500 z-50 text-right mix-blend-difference pointer-events-none">
+        <span class="tracking-widest">ACTIVE_NODE</span><br>
+        <span id="current-node-display" class="text-acid font-bold text-sm tracking-wider">[ DEPLOY ]</span>
+    </div>
+
+    <main id="app-root" class="relative z-10 pt-40 pb-20">
+        <section class="px-6 md:px-20 mb-32 max-w-6xl mx-auto">
+            <div class="reveal mb-4">
+                <span class="text-pink font-mono text-xs font-bold uppercase tracking-widest">// UPLINK_ESTABLISHED</span>
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-6 reveal">Start Your<br><span class="text-acid">Build Sprint</span></h1>
+            <p class="font-mono text-gray-400 mb-12 max-w-2xl reveal">Share your current blocker, timeline, and delivery target. We respond with fit, proposed approach, and clear next actions within 24 hours.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="project-card p-10 reveal lg:col-span-1">
+                    <h3 class="text-2xl font-black uppercase mb-6">What Happens Next</h3>
+                    <ul class="signal-list mb-8">
+                        <li>Fast feasibility review of your requested scope</li>
+                        <li>Proposed sprint slices for playable progress</li>
+                        <li>Suggested ownership split with your team</li>
+                        <li>Clear go-forward recommendation</li>
+                    </ul>
+                    <div class="trust-item mb-4">
+                        <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Average Reply</p>
+                        <p class="font-black text-xl uppercase">Under 24 Hours</p>
+                    </div>
+                    <div class="trust-item">
+                        <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Channels</p>
+                        <p class="font-black text-xl uppercase">Email + Discord</p>
+                    </div>
+                    <div class="trust-item mt-4">
+                        <p class="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Primary Email</p>
+                        <p class="font-black text-sm normal-case">contact@scimythgames.studio</p>
+                    </div>
+                </div>
+
+                <div class="project-card p-12 reveal lg:col-span-2">
+                <form id="contact-form" class="space-y-8" novalidate>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="field-group reveal">
+                            <label class="block font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Target_Studio</label>
+                            <input id="target-studio" type="text" placeholder="NAME_REQUIRED" class="terminal-input interactable" required>
+                            <p class="form-hint">Team or studio name</p>
+                            <p class="input-error" data-error-for="target-studio"></p>
+                        </div>
+                        <div class="field-group reveal">
+                            <label class="block font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Comms_Channel</label>
+                            <input id="comms-channel" type="email" placeholder="EMAIL_REQUIRED" class="terminal-input interactable" required>
+                            <p class="form-hint">Best email for project contact</p>
+                            <p class="input-error" data-error-for="comms-channel"></p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="field-group reveal">
+                            <label class="block font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Budget_Window</label>
+                            <select id="budget-window" class="terminal-input interactable" required>
+                                <option value="">SELECT_RANGE</option>
+                                <option value="5k-15k">USD 5K - 15K</option>
+                                <option value="15k-40k">USD 15K - 40K</option>
+                                <option value="40k+">USD 40K+</option>
+                            </select>
+                            <p class="input-error" data-error-for="budget-window"></p>
+                        </div>
+                        <div class="field-group reveal">
+                            <label class="block font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Delivery_Timeline</label>
+                            <select id="delivery-timeline" class="terminal-input interactable" required>
+                                <option value="">SELECT_TIMELINE</option>
+                                <option value="2-4-weeks">2-4 weeks</option>
+                                <option value="1-2-months">1-2 months</option>
+                                <option value="3-plus-months">3+ months</option>
+                            </select>
+                            <p class="input-error" data-error-for="delivery-timeline"></p>
+                        </div>
+                    </div>
+                    <div class="field-group reveal">
+                        <label class="block font-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Mission_Brief</label>
+                        <textarea id="mission-brief" rows="4" placeholder="DESCRIBE_SCOPE_OR_REASON_FOR_INTERVENTION" class="terminal-input interactable resize-none" required></textarea>
+                        <p class="form-hint">Include platform, gameplay goal, and current blocker</p>
+                        <p class="input-error" data-error-for="mission-brief"></p>
+                    </div>
+                    <div class="pt-4 reveal">
+                        <button type="submit" class="btn-glitch px-12 py-5 text-xl interactable transition-all w-full md:w-auto">
+                            EXECUTE_CONTRACT.EXE
+                        </button>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+            <!-- AI Assessment Placeholder -->
+            <div id="ai-assessment" class="hidden mt-12 project-card p-10 border-pink bg-pink/5 reveal">
+                <h3 class="text-pink font-mono text-xl mb-4 uppercase tracking-widest">>> Threat_Analysis_Result</h3>
+                <div id="ai-output" class="font-mono text-sm text-gray-300 leading-relaxed">
+                    Analyzing tactical brief...
+                </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger">
+                <div class="project-card p-8">
+                    <h3 class="text-2xl font-black uppercase mb-4">Cooperation Models</h3>
+                    <ul class="signal-list">
+                        <li>Outstaffing for specific specialist roles</li>
+                        <li>Dedicated team for sustained feature velocity</li>
+                        <li>Managed outsourcing for turnkey delivery</li>
+                    </ul>
+                </div>
+                <div class="project-card p-8">
+                    <h3 class="text-2xl font-black uppercase mb-4">Quick FAQ</h3>
+                    <ul class="signal-list">
+                        <li>NDA support before deep technical discussion</li>
+                        <li>Typical kickoff window: 1-2 weeks</li>
+                        <li>Milestone-based delivery and reporting</li>
+                        <li>IP ownership remains with client</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs font-mono text-gray-600">
+        <div class="mb-4 md:mb-0 uppercase tracking-widest">© 2026 SciMyth Games // Game Development Studio</div>
+        <div class="flex gap-8 uppercase tracking-widest">
+            <a href="#" class="hover:text-acid transition-all interactable">Twitter</a>
+            <a href="#" class="hover:text-acid transition-all interactable">ArtStation</a>
+            <a href="#" class="hover:text-acid transition-all interactable">Discord</a>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-dark/95 z-[9999] hidden flex items-center justify-center p-6">
+        <div class="max-w-md w-full border-t-4 border-acid bg-surface p-12 text-center reveal">
+            <h2 class="text-acid text-5xl font-black uppercase mb-4">UPLINK_SUCCESS</h2>
+            <p class="font-mono text-sm text-gray-400 mb-8">Contract data received. Our studio will review your brief and respond within 24 standard hours.</p>
+            <button id="close-modal" class="btn-glitch px-8 py-3 font-mono interactable">DISCONNECT</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        const form = document.getElementById('contact-form');
+        const fieldMessages = {
+            'target-studio': 'Target studio is required.',
+            'comms-channel': 'A valid email is required.',
+            'budget-window': 'Select a budget range.',
+            'delivery-timeline': 'Select an expected timeline.',
+            'mission-brief': 'Add a short mission brief.'
+        };
+
+        function setFieldError(field, message) {
+            const errorNode = document.querySelector(`[data-error-for="${field.id}"]`);
+            field.classList.add('is-invalid');
+            if (errorNode) errorNode.textContent = message;
+        }
+
+        function clearFieldError(field) {
+            const errorNode = document.querySelector(`[data-error-for="${field.id}"]`);
+            field.classList.remove('is-invalid');
+            if (errorNode) errorNode.textContent = '';
+        }
+
+        form?.querySelectorAll('input, textarea, select').forEach((field) => {
+            field.addEventListener('input', () => clearFieldError(field));
+            field.addEventListener('change', () => clearFieldError(field));
+        });
+
+        form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let hasError = false;
+
+            form.querySelectorAll('input, textarea, select').forEach((field) => {
+                clearFieldError(field);
+                if (!field.checkValidity()) {
+                    hasError = true;
+                    setFieldError(field, fieldMessages[field.id] || 'This field is required.');
+                }
+            });
+
+            if (hasError) return;
+
+            const modal = document.getElementById('success-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.querySelector('.reveal')?.classList.add('active');
+            }
+        });
+
+        document.getElementById('close-modal')?.addEventListener('click', () => {
+            document.getElementById('success-modal')?.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
