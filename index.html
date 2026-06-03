@@ -3,7 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SciMyth Games | Game Development Studio</title>
+    <title>SciMyth Games | Unreal Engine & Unity Game Development Studio</title>
+    <meta name="description" content="SciMyth Games is a premier game development studio specializing in Unreal Engine 5 & Unity. We design and deliver responsive combat, advanced AI systems, and core gameplay loops for AA/AAA games.">
+    <meta name="keywords" content="game development studio, Unreal Engine 5 developer, Unity game developers, gameplay systems, combat designer, AI Behavior Trees, game development outsource">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scimythgames.studio/index.html">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scimythgames.studio/">
+    <meta property="og:title" content="SciMyth Games | High-Performance Game Development Studio">
+    <meta property="og:description" content="Ship gameplay systems that hold up in production. Custom Unreal Engine 5 & Unity solutions for combat, AI, and systems architecture.">
+    <meta property="og:image" content="https://scimythgames.studio/assets/projects/indra/Indra1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scimythgames.studio/">
+    <meta property="twitter:title" content="SciMyth Games | High-Performance Game Development Studio">
+    <meta property="twitter:description" content="Ship gameplay systems that hold up in production. Custom Unreal Engine 5 & Unity solutions for combat, AI, and systems architecture.">
+    <meta property="twitter:image" content="https://scimythgames.studio/assets/projects/indra/Indra1.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "SciMyth Games",
+      "image": "https://scimythgames.studio/assets/projects/indra/Indra1.png",
+      "description": "Professional game development studio delivering Unreal Engine 5 & Unity gameplay systems, combat design, and AI Behavior Trees.",
+      "url": "https://scimythgames.studio/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "priceRange": "$$$$"
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +81,18 @@
             <a href="proof.html" class="nav-link interactable hover:text-acid transition-brutal">[ PROOF ]</a>
             <a href="deploy.html" class="interactable hover:text-acid transition-brutal text-pink">[ DEPLOY ]</a>
         </div>
+        <button id="mobile-menu-btn" class="md:hidden font-mono text-sm interactable text-acid hover:text-pink transition-all focus:outline-none" aria-label="Toggle Menu">
+            [ MENU ]
+        </button>
     </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-dark/95 z-40 hidden flex flex-col justify-center items-center font-mono space-y-8 text-2xl">
+        <a href="index.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ HOME ]</a>
+        <a href="arsenal.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ ARSENAL ]</a>
+        <a href="proof.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ PROOF ]</a>
+        <a href="deploy.html" class="mobile-nav-link text-pink hover:text-acid transition-brutal">[ DEPLOY ]</a>
+    </div>
 
     <div class="fixed bottom-6 right-6 font-mono text-xs text-gray-500 z-50 text-right mix-blend-difference pointer-events-none">
         <span class="tracking-widest">ACTIVE_NODE</span><br>

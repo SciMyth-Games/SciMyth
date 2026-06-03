@@ -3,7 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROOF | SciMyth Games</title>
+    <title>Delivery Proof | Our Game Portfolio | SciMyth Games</title>
+    <meta name="description" content="Explore the game portfolio and battle logs of SciMyth Games. Detailed case studies, videos, and specifications for projects like Legend of Indra, Reality Run, and Slimey Jump.">
+    <meta name="keywords" content="game portfolio, game case study, Legend of Indra, Reality Run, Slimey Jump, game system design, game architecture proof">
+    <meta name="robots" content="index, follow">
+    <link class="canonical" href="https://scimythgames.studio/proof.html">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scimythgames.studio/proof.html">
+    <meta property="og:title" content="Delivery Proof | SciMyth Games">
+    <meta property="og:description" content="Explore the game portfolio and battle logs of SciMyth Games. Detailed case studies, videos, and specifications for projects like Legend of Indra, Reality Run, and Slimey Jump.">
+    <meta property="og:image" content="https://scimythgames.studio/assets/projects/indra/Indra1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scimythgames.studio/proof.html">
+    <meta property="twitter:title" content="Delivery Proof | SciMyth Games">
+    <meta property="twitter:description" content="Explore the game portfolio and battle logs of SciMyth Games. Detailed case studies, videos, and specifications for projects like Legend of Indra, Reality Run, and Slimey Jump.">
+    <meta property="twitter:image" content="https://scimythgames.studio/assets/projects/indra/Indra1.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Delivery Proof Portfolio",
+      "description": "Showcase of dynamic game design prototypes and shipped titles in Unreal Engine 5 and Unity.",
+      "url": "https://scimythgames.studio/proof.html"
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +75,18 @@
             <a href="proof.html" class="nav-link interactable hover:text-acid transition-brutal">[ PROOF ]</a>
             <a href="deploy.html" class="interactable hover:text-acid transition-brutal text-pink">[ DEPLOY ]</a>
         </div>
+        <button id="mobile-menu-btn" class="md:hidden font-mono text-sm interactable text-acid hover:text-pink transition-all focus:outline-none" aria-label="Toggle Menu">
+            [ MENU ]
+        </button>
     </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-dark/95 z-40 hidden flex flex-col justify-center items-center font-mono space-y-8 text-2xl">
+        <a href="index.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ HOME ]</a>
+        <a href="arsenal.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ ARSENAL ]</a>
+        <a href="proof.html" class="mobile-nav-link text-white hover:text-acid transition-brutal">[ PROOF ]</a>
+        <a href="deploy.html" class="mobile-nav-link text-pink hover:text-acid transition-brutal">[ DEPLOY ]</a>
+    </div>
 
     <div class="fixed bottom-6 right-6 font-mono text-xs text-gray-500 z-50 text-right mix-blend-difference pointer-events-none">
         <span class="tracking-widest">ACTIVE_NODE</span><br>

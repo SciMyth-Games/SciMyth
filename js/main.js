@@ -116,6 +116,33 @@ window.addEventListener('load', function() {
         const pageName = page.replace('.html', '').toUpperCase() || 'HOME';
         nodeDisplay.innerText = `[ ${pageName} ]`;
     }
+
+    /* Mobile Menu Toggle */
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    if (menuBtn && menuOverlay) {
+        menuBtn.addEventListener('click', () => {
+            const isOpen = menuOverlay.classList.contains('active');
+            if (isOpen) {
+                menuOverlay.classList.remove('active');
+                menuBtn.innerText = '[ MENU ]';
+                document.body.style.overflow = '';
+            } else {
+                menuOverlay.classList.add('active');
+                menuBtn.innerText = '[ CLOSE ]';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Close menu when clicking link
+        menuOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+                menuBtn.innerText = '[ MENU ]';
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });
 
 /* Carousel Controller */
